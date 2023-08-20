@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-minikube-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-minikube-app
+  template:
+    metadata:
+      labels:
+        app: deploy-minikube-app
+    spec:
+      containers:
+        - name: deploy-minikube-container
+          image: deployminikube:v1
+          ports:
+            - containerPort: 8080
